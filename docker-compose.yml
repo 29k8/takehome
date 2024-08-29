@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./investment_portal
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./investment_portal:/code
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./vue-project
+    ports:
+      - "4173:4173"
+    volumes:
+      - ./vue-project:/app
