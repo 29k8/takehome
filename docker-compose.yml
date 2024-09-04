@@ -3,7 +3,11 @@ version: '3.8'
 services:
   web:
     build: ./investment_portal
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py loaddata investment_portal/fixtures/initial_data &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./investment_portal:/code
     ports:

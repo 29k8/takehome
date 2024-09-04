@@ -36,37 +36,33 @@
 </template>
 
 <script>
-import apiClient from '../services/api'
+import apiClient from '../services/api';
 
 export default {
   data() {
     return {
       username: '',
       password: '',
-      error: null
-    }
+      error: ''
+    };
   },
   methods: {
-    login() {
-      // Prepare login data
-      const loginData = {
-        username: this.username,
-        password: this.password
-      }
+    async login() {
+      try {
+        const response = await apiClient.post('/token/', {
+          username: this.username,
+          password: this.password
+        });
 
-      // Send login request
-      apiClient.post('/login/', loginData)
-        .then(response => {
-          // Handle successful login
-          console.log('Login successful:', response.data)
-          this.$router.push('/offerings')
-        })
-        .catch(error => {
-          // Handle login failure
-          console.error('Login failed:', error)
-          this.error = 'Invalid username or password. Please try again.'
-        })
+        // Store the JWT tokens in localStorage
+        localStorage.setItem('access_token', response.data.access);
+        localStorage.setItem('refresh_token', response.data.refresh);
+
+        this.$router.push({ name: 'Home' });
+      } catch (err) {
+        this.error = 'Invalid username or password.' + err;
+      }
     }
   }
-}
+};
 </script>

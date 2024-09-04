@@ -72,3 +72,9 @@ This will execute all the tests defined in your Django applications, ensuring th
 - **API Documentation**: You can explore the available API endpoints using tools like Postman or directly through a browser at `http://localhost:8000/api`.
 
 - **Further Development**: You can extend the functionality of both the backend and frontend by adding more features, improving the UI, and enhancing the API.
+
+## Note:
+
+To rebuild the docker images 
+docker rmi -f $(docker images -q)
+docker compose up

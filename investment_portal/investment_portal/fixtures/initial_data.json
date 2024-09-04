@@ -1,0 +1,27 @@
+[
+  {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_superuser": true,
+      "is_active": true,
+      "password": "pbkdf2_sha256$600000$i6wCJrVcAvZWlZn22NGGy8$Jb3kYC9AQ0wIAtu1SVkiVNb4DcgnVpFrw15C6jMGkQA="
+    }
+  },
+  {
+    "model": "offerings.offering",
+    "pk": 1,
+    "fields": {
+      "title": "Project Iron",
+      "description": "Investment in a business development company...",
+      "estimated_term_years": "5",
+      "target_net_irr": "18.7",
+      "minimum_investment": 100000,
+      "created_at": "2021-01-01T00:00:00Z",
+      "updated_at": "2021-01-01T00:00:00Z"
+    }
+  }
+]
